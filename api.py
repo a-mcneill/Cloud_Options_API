@@ -65,3 +65,4 @@ def price_get():
 @app.get("/greeks")
 def greeks_get():
     return {"Message": "Use POST with JSON body to calculate Greeks."}
+    
