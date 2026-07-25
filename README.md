@@ -9,7 +9,7 @@ This project showcases:
 - Deployment to Google Cloud Run
 - Image management via Artifact Registry
 - Stateless service design and autoscaling
-- Public HTTPS API exposure
+- Secure HTTPS API exposure (IAM-restricted)
 - GET/POST endpoint separation and request validation
 
 ## Project Overview
@@ -133,6 +133,8 @@ Deploy the pushed image:
 ```bash
 gcloud run deploy options-api --image australia-southeast1-docker.pkg.dev/project-80240421-d4f7-4969-904/options-api/options-api --region australia-southeast1 --platform managed --no-allow-unauthenticated
 ```
+
+This service is deployed without public access to prevent automated traffic, abuse, and unexpected costs. Authenticated access is available via Cloud Run proxy or identity tokens.
 
 ### Cloud Run Endpoint
 Cloud Run will provide a public HTTPS endpoint once deployment completes.
