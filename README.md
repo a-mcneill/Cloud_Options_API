@@ -131,7 +131,7 @@ docker push australia-southeast1-docker.pkg.dev/project-80240421-d4f7-4969-904/o
 ## Deploying to Google Cloud Run
 Deploy the pushed image:
 ```bash
-gcloud run deploy options-api --image australia-southeast1-docker.pkg.dev/project-80240421-d4f7-4969-904/options-api/options-api --region australia-southeast1 --platform managed --allow-unauthenticated
+gcloud run deploy options-api --image australia-southeast1-docker.pkg.dev/project-80240421-d4f7-4969-904/options-api/options-api --region australia-southeast1 --platform managed --no-allow-unauthenticated
 ```
 
 ### Cloud Run Endpoint
