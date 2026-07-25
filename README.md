@@ -137,5 +137,22 @@ gcloud run deploy options-api --image australia-southeast1-docker.pkg.dev/projec
 This service is deployed without public access to prevent automated traffic, abuse, and unexpected costs. Authenticated access is available via Cloud Run proxy or identity tokens.
 
 ### Cloud Run Endpoint
-Cloud Run will provide a public HTTPS endpoint once deployment completes.
-https://options-api-1096982697367.australia-southeast1.run.app/docs
+Cloud Run will provide a secure HTTPS endpoint, restricted by IAM.
+Direct browser access will return 403 Forbidden unless authenticated.
+
+To access the API:
+**Via Cloud Run Proxy:**
+```bash
+gcloud run services proxy options-api --region australia-southeast1 --project project-80240421-d4f7-4969-904
+```
+Then open:
+```bash
+http://localhost:8080/docs
+```
+
+**Via Identity Token (direct HTTPS):**
+```bash
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+     https://options-api-1096982697367.australia-southeast1.run.app/docs
+```
+
